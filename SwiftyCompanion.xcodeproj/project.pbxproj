@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,13 @@
 		B76A9866241BFB6A00068B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76A9865241BFB6A00068B73 /* Assets.xcassets */; };
 		B76A9869241BFB6A00068B73 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B76A9868241BFB6A00068B73 /* Preview Assets.xcassets */; };
 		B76A986C241BFB6A00068B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76A986A241BFB6A00068B73 /* LaunchScreen.storyboard */; };
+		B76A9874241C031300068B73 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A9873241C031300068B73 /* UserView.swift */; };
+		B76A9876241C066F00068B73 /* UserPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A9875241C066F00068B73 /* UserPicture.swift */; };
+		B76A9878241C0D9C00068B73 /* TemplateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A9877241C0D9C00068B73 /* TemplateTableView.swift */; };
+		B76A987A241C16B400068B73 /* TemplateTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A9879241C16B400068B73 /* TemplateTableRow.swift */; };
+		B76A987C241C189800068B73 /* IntraApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A987B241C189800068B73 /* IntraApi.swift */; };
+		B76A987F241C18F400068B73 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = B76A987E241C18F400068B73 /* OAuth2 */; };
+		B76A9881241C193500068B73 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A9880241C193500068B73 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,12 @@
 		B76A9868241BFB6A00068B73 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B76A986B241BFB6A00068B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B76A986D241BFB6A00068B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B76A9873241C031300068B73 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		B76A9875241C066F00068B73 /* UserPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPicture.swift; sourceTree = "<group>"; };
+		B76A9877241C0D9C00068B73 /* TemplateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableView.swift; sourceTree = "<group>"; };
+		B76A9879241C16B400068B73 /* TemplateTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableRow.swift; sourceTree = "<group>"; };
+		B76A987B241C189800068B73 /* IntraApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntraApi.swift; sourceTree = "<group>"; };
+		B76A9880241C193500068B73 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B76A987F241C18F400068B73 /* OAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +77,12 @@
 				B76A986A241BFB6A00068B73 /* LaunchScreen.storyboard */,
 				B76A986D241BFB6A00068B73 /* Info.plist */,
 				B76A9867241BFB6A00068B73 /* Preview Content */,
+				B76A9873241C031300068B73 /* UserView.swift */,
+				B76A9875241C066F00068B73 /* UserPicture.swift */,
+				B76A9877241C0D9C00068B73 /* TemplateTableView.swift */,
+				B76A9879241C16B400068B73 /* TemplateTableRow.swift */,
+				B76A987B241C189800068B73 /* IntraApi.swift */,
+				B76A9880241C193500068B73 /* User.swift */,
 			);
 			path = SwiftyCompanion;
 			sourceTree = "<group>";
@@ -91,6 +111,9 @@
 			dependencies = (
 			);
 			name = SwiftyCompanion;
+			packageProductDependencies = (
+				B76A987E241C18F400068B73 /* OAuth2 */,
+			);
 			productName = SwiftyCompanion;
 			productReference = B76A985C241BFB6900068B73 /* SwiftyCompanion.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +142,9 @@
 				Base,
 			);
 			mainGroup = B76A9853241BFB6900068B73;
+			packageReferences = (
+				B76A987D241C18F400068B73 /* XCRemoteSwiftPackageReference "OAuth2" */,
+			);
 			productRefGroup = B76A985D241BFB6900068B73 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,8 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B76A9860241BFB6900068B73 /* AppDelegate.swift in Sources */,
+				B76A987C241C189800068B73 /* IntraApi.swift in Sources */,
 				B76A9862241BFB6900068B73 /* SceneDelegate.swift in Sources */,
+				B76A987A241C16B400068B73 /* TemplateTableRow.swift in Sources */,
 				B76A9864241BFB6900068B73 /* ContentView.swift in Sources */,
+				B76A9881241C193500068B73 /* User.swift in Sources */,
+				B76A9878241C0D9C00068B73 /* TemplateTableView.swift in Sources */,
+				B76A9876241C066F00068B73 /* UserPicture.swift in Sources */,
+				B76A9874241C031300068B73 /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B76A987D241C18F400068B73 /* XCRemoteSwiftPackageReference "OAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/p2/OAuth2.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B76A987E241C18F400068B73 /* OAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B76A987D241C18F400068B73 /* XCRemoteSwiftPackageReference "OAuth2" */;
+			productName = OAuth2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B76A9854241BFB6900068B73 /* Project object */;
 }
