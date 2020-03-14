@@ -13,18 +13,37 @@ struct ContentView: View {
     
     @State private var login: String = ""
     @State private var showAlert = false
-    let intra = IntraApi()
+    @State private var navigationActive = false
+    @State private var researchUser: User?
+    let intra: IntraApi
     
-    func    callbackMe(dict: OAuth2JSON?, error: Error?) -> Void {
+    /* New Version */
+//    func callbackMe(dict: OAuth2JSON?, error: Error?) -> Void {
+//        if let json = dict {
+//            if json.isEmpty {
+//                self.showAlert = true
+//            } else {
+//                self.researchUser = intra.createUser(json)
+//                self.navigationActive = true
+//
+//            }
+//        } else {
+//            self.showAlert = true
+//        }
+//    }
+
+    /* Old Version */
+    func callbackMe(dict: OAuth2JSON?, error: Error?) -> Void {
         if let json = dict {
             if json.isEmpty {
                 self.showAlert = true
             } else {
-                let researchUser = intra.createUser(json)
-                NavigationLink(destination: UserView(user: researchUser!)) {
-                    Text("Back")
-                }
+                self.researchUser = intra.createUser(json)
+                self.navigationActive = true
+
             }
+        } else {
+            self.showAlert = true
         }
     }
     
@@ -41,9 +60,10 @@ struct ContentView: View {
                     .overlay(RoundedRectangle(cornerRadius: 40)
                         .stroke(Color.gray))
                     .padding(.horizontal, 20)
-                
+
                 Button(action: {
                     self.intra.request(self.login.lowercased(), callback: self.callbackMe(dict:error:))
+                    print(self.researchUser?.login)
                 }) {
                     Text("Enter")
                         .fontWeight(.semibold)
@@ -59,14 +79,20 @@ struct ContentView: View {
                     Alert(title: Text("Error"), message: Text("Error to get user !"), dismissButton: .cancel())
                 }
                 
+                NavigationLink(destination: TemplateTableView(), isActive: $navigationActive) {
+                    
+                    EmptyView()
+
+                }.navigationBarTitle(Text("Swifty-Companion"), displayMode: .large)
+                
             }.padding()
             
-        }.navigationBarTitle(Text("Swifty-Companion"))
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(intra: IntraApi())
     }
 }

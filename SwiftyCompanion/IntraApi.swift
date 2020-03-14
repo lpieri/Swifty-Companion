@@ -6,6 +6,7 @@
 //  Copyright © 2020 Louise Pieri. All rights reserved.
 //
 import UIKit
+import SwiftUI
 import OAuth2
 
 class   IntraApi: OAuth2DataLoader {
@@ -25,6 +26,15 @@ class   IntraApi: OAuth2DataLoader {
         super.init(oauth2: oauth)
     }
     
+    func    getToken() {
+        oauth2.logger = OAuth2DebugLogger(.debug)
+        let tokenUrl = URL(string: "https://api.intra.42.fr/oauth/token/info")!
+        let req = oauth2.request(forURL: tokenUrl)
+        perform(request: req) { response in
+            do {}
+        }
+    }
+    
     func    request(_ login: String, callback: @escaping ((OAuth2JSON?, Error?) -> Void)) {
         oauth2.logger = OAuth2DebugLogger(.debug)
         let loginUrl = baseUrl.appendingPathComponent("users/\(login)")
@@ -33,7 +43,6 @@ class   IntraApi: OAuth2DataLoader {
             do {
                 let dict = try response.responseJSON()
                 DispatchQueue.main.async {
-                    print(dict)
                     callback(dict, nil)
                 }
             }
@@ -89,7 +98,8 @@ class   IntraApi: OAuth2DataLoader {
                 location = locationVal as! String
             }
         }
-        let image: UIImage? = getProfilePicture(json["image_url"] as! String)
+        let uiImage: UIImage? = getProfilePicture(json["image_url"] as! String)
+        let image: Image = Image(uiImage: uiImage!)
         let cursusUsers = json["cursus_users"] as! NSArray
         var level: NSNumber = NSNumber(0)
         for cursus in cursusUsers {

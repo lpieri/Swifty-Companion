@@ -13,40 +13,44 @@ struct UserView: View {
     
     var body: some View {
         
-        VStack {
-            
-            HStack {
+        NavigationView {
+        
+            VStack {
                 
-                UserPicture(image: user.image)
+                HStack {
+                    
+                    UserPicture(image: user.image)
+                    
+                    VStack(alignment: .leading)  {
+                        
+                        Text(user.login)
+                            .font(.title)
+                            .fontWeight(.semibold)
+                        
+                        Text(user.email)
+                            .font(.headline)
+                        
+                        Text(user.location)
+                            .font(.subheadline)
+                        
+                    }.frame(minWidth: 0, maxWidth: .infinity)
+                        
+                }
                 
-                VStack(alignment: .leading)  {
-                    
-                    Text(user.login)
-                        .font(.title)
-                        .fontWeight(.semibold)
-                    
-                    Text(user.email)
+                VStack {
+                    Text("Level: \(user.level)")
                         .font(.headline)
                     
-                    Text(user.location)
-                        .font(.subheadline)
-                    
-                }.frame(minWidth: 0, maxWidth: .infinity)
-                    
-            }
-            
-            VStack {
-                Text("Level: \(user.level)")
-                    .font(.headline)
+                    RoundedRectangle(cornerRadius: 35)
+                        .foregroundColor(.green)
+                        .frame(height: 35.0)
+                }
                 
-                RoundedRectangle(cornerRadius: 35)
-                    .foregroundColor(.green)
-                    .frame(height: 35.0)
-            }
+                Spacer()
+                
+            }.padding()
             
-            Spacer()
-            
-        }.padding()
+        }.navigationBarTitle(Text("Back"), displayMode: .inline)
     }
 }
 
