@@ -16,7 +16,7 @@ struct TemplateTableView: View {
     var body: some View {
         
         VStack (alignment: .leading, spacing: 2) {
-            
+
             Text(title)
                 .font(.largeTitle)
                 .fontWeight(.semibold)

@@ -15,7 +15,6 @@ struct UserProfile: View {
     var body: some View {
         
         VStack {
-            
              HStack {
                 UserPicture(image: user.image)
                 VStack(alignment: .leading)  {
@@ -33,9 +32,7 @@ struct UserProfile: View {
             VStack {
                 Text("Level: \(user.level)")
                     .font(.headline)
-                RoundedRectangle(cornerRadius: 35)
-                    .foregroundColor(.green)
-                    .frame(height: 35.0)
+                LevelBar(levelProgess: user.levelProgress)
             }
             
         }.padding()

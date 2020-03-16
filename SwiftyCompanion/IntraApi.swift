@@ -29,7 +29,6 @@ class   IntraApi: OAuth2DataLoader {
     }
     
     func    getToken() {
-        oauth2.logger = OAuth2DebugLogger(.debug)
         let tokenUrl = URL(string: "https://api.intra.42.fr/oauth/token/info")!
         let req = oauth2.request(forURL: tokenUrl)
         perform(request: req) { response in
@@ -38,7 +37,6 @@ class   IntraApi: OAuth2DataLoader {
     }
     
     func    request(_ login: String, callback: @escaping ((OAuth2JSON?, Error?) -> Void)) {
-        oauth2.logger = OAuth2DebugLogger(.debug)
         let loginUrl = baseUrl.appendingPathComponent("users/\(login)")
         let req = oauth2.request(forURL: loginUrl)
         perform(request: req) { response in
@@ -146,6 +144,7 @@ class   IntraApi: OAuth2DataLoader {
         newUser.location = location
         newUser.displayName = displayName
         newUser.level = level
+        newUser.levelProgress = CGFloat((level.doubleValue - Double(level.intValue)) * 100)
         newUser.image = image
         newUser.projects = projectsUser
         newUser.skills = skills

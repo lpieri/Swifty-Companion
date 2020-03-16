@@ -14,7 +14,6 @@ struct ContentView: View {
     
     @State private var login: String = ""
     @State private var showAlert = false
-    @State private var navigationActive = false
     @EnvironmentObject var researchUser: User
     let intra: IntraApi
     
@@ -24,8 +23,7 @@ struct ContentView: View {
                 self.showAlert = true
             } else {
                 intra.createUser(json, newUser: self.researchUser)
-                print(researchUser.login)
-                self.navigationActive = true
+                self.researchUser.isActive = true
             }
         } else {
             self.showAlert = true
@@ -63,11 +61,11 @@ struct ContentView: View {
                     Alert(title: Text("Error"), message: Text("Error to get user !"), dismissButton: .cancel())
                 }
                 
-                NavigationLink(destination: UserView(), isActive: $navigationActive) {
+                NavigationLink(destination: UserView(), isActive: $researchUser.isActive) {
                     
                     EmptyView()
 
-                }.navigationBarTitle(Text("Swifty-Companion"), displayMode: .large)
+                }.navigationBarTitle(Text("Swifty-Companion"), displayMode: .automatic)
                 
             }.padding()
             
@@ -77,6 +75,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(intra: IntraApi()).environmentObject(User())
+        ContentView(intra: IntraApi())
+            .environmentObject(User())
+            .environment(\.colorScheme, .light)
     }
 }

@@ -10,6 +10,20 @@ import SwiftUI
 
 struct UserView: View {
     @EnvironmentObject var user: User
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var btnBack: some View {
+        Button(action: {
+            self.user.isActive = false
+        }) {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .foregroundColor(.blue)
+                Text("Back")
+            }
+        }
+        
+    }
     
     var body: some View {
         
@@ -30,8 +44,10 @@ struct UserView: View {
 
             }
             
-//            Spacer()
         }
+        .navigationBarHidden(true)
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarItems(leading: btnBack)
     }
 }
 

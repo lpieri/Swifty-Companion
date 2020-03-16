@@ -20,6 +20,7 @@
 		B76A987C241C189800068B73 /* IntraApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A987B241C189800068B73 /* IntraApi.swift */; };
 		B76A987F241C18F400068B73 /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = B76A987E241C18F400068B73 /* OAuth2 */; };
 		B76A9881241C193500068B73 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76A9880241C193500068B73 /* User.swift */; };
+		B7786CFF241FD2E6000146B0 /* LevelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7786CFE241FD2E6000146B0 /* LevelBar.swift */; };
 		B79E3644241F982C00B187CA /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79E3643241F982C00B187CA /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		B76A9879241C16B400068B73 /* TemplateTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableRow.swift; sourceTree = "<group>"; };
 		B76A987B241C189800068B73 /* IntraApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntraApi.swift; sourceTree = "<group>"; };
 		B76A9880241C193500068B73 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B7786CFE241FD2E6000146B0 /* LevelBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBar.swift; sourceTree = "<group>"; };
 		B79E3643241F982C00B187CA /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				B76A9879241C16B400068B73 /* TemplateTableRow.swift */,
 				B76A987B241C189800068B73 /* IntraApi.swift */,
 				B76A9880241C193500068B73 /* User.swift */,
+				B7786CFE241FD2E6000146B0 /* LevelBar.swift */,
 			);
 			path = SwiftyCompanion;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				B76A987A241C16B400068B73 /* TemplateTableRow.swift in Sources */,
 				B76A9864241BFB6900068B73 /* ContentView.swift in Sources */,
 				B76A9881241C193500068B73 /* User.swift in Sources */,
+				B7786CFF241FD2E6000146B0 /* LevelBar.swift in Sources */,
 				B76A9878241C0D9C00068B73 /* TemplateTableView.swift in Sources */,
 				B76A9876241C066F00068B73 /* UserPicture.swift in Sources */,
 				B76A9874241C031300068B73 /* UserView.swift in Sources */,
