@@ -10,27 +10,30 @@ import SwiftUI
 
 struct TemplateTableView: View {
     
-    var data: [Project]
+    var title: String
+    var data: [UserData]
     
     var body: some View {
         
-        VStack (alignment: .leading) {
+        VStack (alignment: .leading, spacing: 2) {
             
-            Text("Project")
+            Text(title)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
             
-            List (data, id: \.projectName) { dataRow in
+            List (data, id: \.name) { dataRow in
                 TemplateTableRow(data: dataRow)
             }
             
         }.padding()
+        .frame(height: 250)
         
     }
 }
 
 struct TemplateTableView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        TemplateTableView(data: [Project]())
+        TemplateTableView(title: "Projects", data: [UserData]())
     }
 }

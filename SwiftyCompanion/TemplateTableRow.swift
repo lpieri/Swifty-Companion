@@ -10,36 +10,38 @@ import SwiftUI
 
 struct TemplateTableRow: View {
     
-    var data: Project
+    var data: UserData
     
     var body: some View {
         
         HStack {
-            Text(data.projectName)
+            Text(data.name)
                 .font(.headline)
                 .multilineTextAlignment(.leading)
             
             Spacer()
             
-            getGrade(projectData: data)
+            getGrade(data: data)
         }.padding()
         
     }
     
-    func getGrade(projectData: Project) -> Text {
-        if projectData.projectValidated == true {
-            return Text("\(projectData.projectGrade.intValue)").foregroundColor(.green)
-        } else if projectData.projectState == "finished" {
+    func getGrade(data: UserData) -> Text {
+        if data.validated == true {
+            return Text("\(data.grade.intValue)").foregroundColor(.green)
+        } else if data.state == "finished" {
             return Text("Failed").foregroundColor(.red)
+        } else if data.state == "skill" {
+            return Text("\(data.grade.floatValue)")
         }
-        return Text(projectData.projectState)
+        return Text(data.state)
     }
     
 }
 
 struct TemplateTableRow_Previews: PreviewProvider {
     static var previews: some View {
-        TemplateTableRow(data: Project(projectName: "Swift", projectState: "finished", projectGrade: NSNumber(125), projectValidated: true))
+        TemplateTableRow(data: UserData())
             .previewLayout(.fixed(width: 300, height: 70))
     }
 }

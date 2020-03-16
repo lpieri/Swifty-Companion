@@ -9,12 +9,27 @@
 import Combine
 import SwiftUI
 
-struct  Project {
+struct  UserData {
     
-    var projectName: String
-    var projectState: String
-    var projectGrade: NSNumber
-    var projectValidated: Bool
+    var name: String
+    var state: String
+    var grade: NSNumber
+    var validated: Bool
+    
+    init() {
+        self.name = "default"
+        self.state = "default"
+        self.grade = NSNumber(0)
+        self.validated = false
+    }
+    
+    init(name: String, state: String, grade: NSNumber, validated: Bool) {
+        self.name = name
+        self.state = state
+        self.grade = grade
+        self.validated = validated
+
+    }
     
 }
 
@@ -28,6 +43,7 @@ class   User: ObservableObject {
     var displayName: String = "Default Name" { didSet { didChange.send() } }
     var level: NSNumber = NSNumber(value: 0) { didSet { didChange.send() } }
     var image: Image = Image("pp") { didSet { didChange.send() } }
-    var projects: [Project] = [Project]() { didSet { didChange.send() } }
+    var projects: [UserData] = [UserData]() { didSet { didChange.send() } }
+    var skills: [UserData] = [UserData]() { didSet { didChange.send() } }
     
 }

@@ -16,16 +16,21 @@ struct UserView: View {
         VStack {
             UserProfile(user: user)
 
-//            ScrollView (.vertical) {
-//                VStack (spacing: 12) {
-//                    Spacer()
-            TemplateTableView(data: user.projects).frame(minHeight: 0, maxHeight: 300)
-//                    Spacer()
-//                    TemplateTableView(data: user.projects)
-//                }
-//            }
+            ScrollView (.vertical) {
+                
+                TemplateTableView(title: "Projects", data: user.projects)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(height: 250)
+                
+                Spacer()
+
+                TemplateTableView(title: "Skills", data: user.skills)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(height: 250)
+
+            }
             
-            Spacer()
+//            Spacer()
         }
     }
 }
