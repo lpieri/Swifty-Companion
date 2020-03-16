@@ -14,26 +14,27 @@ struct TemplateTableView: View {
     var data: [UserData]
     
     var body: some View {
-        
-        VStack (alignment: .leading, spacing: 2) {
+        ZStack {
+            Color("Background").edgesIgnoringSafeArea(.all)
+            VStack (alignment: .leading, spacing: 2) {
 
-            Text(title)
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-            
-            List (data, id: \.name) { dataRow in
-                TemplateTableRow(data: dataRow)
-            }
-            
-        }.padding()
-        .frame(height: 250)
-        
+                Text(title)
+                    .font(.largeTitle)
+                    .fontWeight(.semibold)
+                
+                List (data, id: \.name) { dataRow in
+                    TemplateTableRow(data: dataRow)
+                }
+                
+            }.padding()
+            .frame(height: 250)
+        }
     }
 }
 
 struct TemplateTableView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TemplateTableView(title: "Projects", data: [UserData]())
+        TemplateTableView(title: "Projects", data: [UserData]()).environment(\.colorScheme, .dark)
     }
 }

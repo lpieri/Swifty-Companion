@@ -14,15 +14,18 @@ struct TemplateTableRow: View {
     
     var body: some View {
         
-        HStack {
-            Text(data.name)
-                .font(.headline)
-                .multilineTextAlignment(.leading)
-            
-            Spacer()
-            
-            getGrade(data: data)
-        }.padding()
+        ZStack {
+            Color("Background").edgesIgnoringSafeArea(.all)
+            HStack {
+                Text(data.name)
+                    .font(.headline)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+                
+                getGrade(data: data)
+            }.padding()
+        }
         
     }
     
@@ -43,5 +46,6 @@ struct TemplateTableRow_Previews: PreviewProvider {
     static var previews: some View {
         TemplateTableRow(data: UserData())
             .previewLayout(.fixed(width: 300, height: 70))
+            .environment(\.colorScheme, .dark)
     }
 }

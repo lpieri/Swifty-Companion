@@ -26,28 +26,30 @@ struct UserView: View {
     }
     
     var body: some View {
-        
-        VStack {
-            UserProfile(user: user)
+        ZStack {
+            Color("Background").edgesIgnoringSafeArea(.all)
+            VStack {
+                UserProfile(user: user)
 
-            ScrollView (.vertical) {
+                ScrollView (.vertical) {
+                    
+                    TemplateTableView(title: "Projects", data: user.projects)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(height: 250)
+                    
+                    Spacer()
+
+                    TemplateTableView(title: "Skills", data: user.skills)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(height: 250)
+
+                }
                 
-                TemplateTableView(title: "Projects", data: user.projects)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(height: 250)
-                
-                Spacer()
-
-                TemplateTableView(title: "Skills", data: user.skills)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(height: 250)
-
             }
-            
+            .navigationBarHidden(true)
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarItems(leading: btnBack)
         }
-        .navigationBarHidden(true)
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarItems(leading: btnBack)
     }
 }
 
