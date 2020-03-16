@@ -18,13 +18,13 @@ struct UserPicture: View {
             .resizable()
             .frame(minWidth: 0, maxWidth: 142, minHeight: 0, maxHeight: 142)
             .clipShape(Circle())
-            .overlay(Circle().stroke(Color.white, lineWidth: 4))
-            .shadow(radius: 4)
+            .overlay(Circle().stroke(Color("CirclePP"), lineWidth: 4))
+            .shadow(color: Color("ShadowPP"), radius: 4)
     }
 }
 
 struct UserPicture_Previews: PreviewProvider {
     static var previews: some View {
-        UserPicture(image: Image("pp"))
+        UserPicture(image: Image("pp")).environment(\.colorScheme, .light)
     }
 }

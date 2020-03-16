@@ -77,6 +77,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(intra: IntraApi())
             .environmentObject(User())
-            .environment(\.colorScheme, .light)
+            .environment(\.colorScheme, .dark)
     }
 }

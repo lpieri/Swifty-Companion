@@ -53,6 +53,6 @@ struct UserView: View {
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView().environmentObject(User())
+        UserView().environmentObject(User()).environment(\.colorScheme, .dark)
     }
 }
