@@ -5,8 +5,10 @@
 //  Created by Louise Pieri on 3/9/20.
 //  Copyright © 2020 Louise Pieri. All rights reserved.
 //
+
 import UIKit
 import SwiftUI
+import Combine
 import OAuth2
 
 class   IntraApi: OAuth2DataLoader {
@@ -61,8 +63,8 @@ class   IntraApi: OAuth2DataLoader {
         return image
     }
     
-    func    parseProjectUser(_ dict: Any) -> [Any] {
-        var projectsParsed = [Any]()
+    func    parseProjectUser(_ dict: Any) -> [Project] {
+        var projectsParsed = [Project]()
         let projects = dict as! NSArray
         for projectVal in projects {
             let project = projectVal as! NSDictionary
@@ -74,12 +76,20 @@ class   IntraApi: OAuth2DataLoader {
                 if projectParent is NSNull {
                     let projectName = projectData["name"] as! String
                     let projectStatus = project["status"] as! String
+                    let isValidated = project["validated?"]
+                    var projectValidated = false
+                    if isValidated is NSNumber {
+                        let isVali = isValidated as! NSNumber
+                        if isVali.intValue == 1 {
+                            projectValidated = true
+                        }
+                    }
                     if projectStatus == "finished" {
                         let finalMark = project["final_mark"] as! NSNumber
-                        let newProject: [String:Any] = [projectName:finalMark]
+                        let newProject: Project = Project(projectName: projectName, projectState: projectStatus, projectGrade: finalMark, projectValidated: projectValidated)
                         projectsParsed.append(newProject)
                     } else {
-                        let newProject: [String:Any] = [projectName:projectStatus]
+                        let newProject: Project = Project(projectName: projectName, projectState: projectStatus, projectGrade: NSNumber(0), projectValidated: projectValidated)
                         projectsParsed.append(newProject)
                     }
                 }
@@ -88,7 +98,7 @@ class   IntraApi: OAuth2DataLoader {
         return projectsParsed
     }
     
-    func    createUser(_ json: OAuth2JSON) -> User? {
+    func    createUser(_ json: OAuth2JSON, newUser: User) -> Void {
         let login = json["login"] as! String
         let displayName = json["displayname"] as! String
         let email = json["email"] as! String
@@ -114,7 +124,12 @@ class   IntraApi: OAuth2DataLoader {
             }
         }
         let projectsUser = parseProjectUser(json["projects_users"]!)
-        let newUser = User(login: login, displayName: displayName, email: email, location: location, level: level, image: image, projects: projectsUser)
-        return newUser
+        newUser.login = login
+        newUser.email = email
+        newUser.location = location
+        newUser.displayName = displayName
+        newUser.level = level
+        newUser.image = image
+        newUser.projects = projectsUser
     }
 }

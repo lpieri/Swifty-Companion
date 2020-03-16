@@ -15,6 +15,7 @@ struct UserPicture: View {
     var body: some View {
         
         self.image
+            .resizable()
             .frame(minWidth: 0, maxWidth: 142, minHeight: 0, maxHeight: 142)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
