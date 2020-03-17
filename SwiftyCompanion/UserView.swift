@@ -45,7 +45,7 @@ struct UserView: View {
 
                 }
                 
-            }
+            }.padding()
             .navigationBarHidden(true)
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: btnBack)

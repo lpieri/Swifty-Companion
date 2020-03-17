@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B75EE80F2420E3BB005F5A50 /* SwiftyCompanion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftyCompanion.entitlements; sourceTree = "<group>"; };
 		B76A985C241BFB6900068B73 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76A985F241BFB6900068B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B76A9861241BFB6900068B73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		B76A985E241BFB6900068B73 /* SwiftyCompanion */ = {
 			isa = PBXGroup;
 			children = (
+				B75EE80F2420E3BB005F5A50 /* SwiftyCompanion.entitlements */,
 				B76A985F241BFB6900068B73 /* AppDelegate.swift */,
 				B76A9861241BFB6900068B73 /* SceneDelegate.swift */,
 				B76A9863241BFB6900068B73 /* ContentView.swift */,
@@ -324,8 +326,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftyCompanion/SwiftyCompanion.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftyCompanion/Preview Content\"";
+				DEVELOPMENT_TEAM = EV49Z586CH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftyCompanion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -334,6 +340,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = louise.lgbt.SwiftyCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -343,8 +350,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftyCompanion/SwiftyCompanion.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftyCompanion/Preview Content\"";
+				DEVELOPMENT_TEAM = EV49Z586CH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftyCompanion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -353,6 +364,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = louise.lgbt.SwiftyCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

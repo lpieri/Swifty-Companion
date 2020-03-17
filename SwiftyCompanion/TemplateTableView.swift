@@ -21,9 +21,15 @@ struct TemplateTableView: View {
                 Text(title)
                     .font(.largeTitle)
                     .fontWeight(.semibold)
-                
-                List (data, id: \.name) { dataRow in
-                    TemplateTableRow(data: dataRow)
+                    
+                List {
+                    ForEach(data, id: \.name) { dataRow in
+                        TemplateTableRow(data: dataRow)
+                    }.listRowBackground(Color("Background"))
+                }.onAppear() {
+                    UITableView.appearance().backgroundColor = UIColor(named: "Background")
+                    UITableView.appearance().separatorColor = UIColor(named: "ShadowPP")
+                    UITableView.appearance().separatorStyle = .singleLine
                 }
                 
             }.padding()

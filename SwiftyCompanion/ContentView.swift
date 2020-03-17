@@ -60,16 +60,16 @@ struct ContentView: View {
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Error"), message: Text("Error to get user !"), dismissButton: .cancel())
                     }
-                    
+
                     NavigationLink(destination: UserView(), isActive: $researchUser.isActive) {
-                        
+
                         EmptyView()
-                        
+
                     }.navigationBarTitle(Text("Swifty-Companion"), displayMode: .automatic)
-                    
+
                 }.padding()
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -77,6 +77,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(intra: IntraApi())
             .environmentObject(User())
-            .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, .light)
     }
 }
