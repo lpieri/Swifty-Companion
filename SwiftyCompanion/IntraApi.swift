@@ -37,6 +37,10 @@ class   IntraApi: OAuth2DataLoader {
     }
     
     func    request(_ login: String, callback: @escaping ((OAuth2JSON?, Error?) -> Void)) {
+        /*
+        **  Helper for the evaluation
+        */
+        //  print(oauth2.accessToken)
         let loginUrl = baseUrl.appendingPathComponent("users/\(login)")
         let req = oauth2.request(forURL: loginUrl)
         perform(request: req) { response in
@@ -82,7 +86,7 @@ class   IntraApi: OAuth2DataLoader {
                             projectValidated = true
                         }
                     }
-                    if projectStatus == "finished" {
+                    if projectStatus == "finished" && project["final_mark"] is NSNumber {
                         let finalMark = project["final_mark"] as! NSNumber
                         let newProject: UserData = UserData(name: projectName, state: projectStatus, grade: finalMark, validated: projectValidated)
                         projectsParsed.append(newProject)
