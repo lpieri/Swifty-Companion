@@ -15,7 +15,7 @@ struct UserProfile: View {
     var body: some View {
         
         VStack {
-             HStack {
+            HStack (alignment: .center, spacing: 16) {
                 UserPicture(image: user.image)
                 VStack(alignment: .leading)  {
                     Text(user.login)
@@ -26,7 +26,8 @@ struct UserProfile: View {
                         .font(.headline)
                     Text(user.location)
                         .font(.subheadline)
-                }.frame(minWidth: 0, maxWidth: .infinity)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
             }
             
             VStack {

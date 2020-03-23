@@ -35,18 +35,16 @@ struct UserView: View {
                     
                     TemplateTableView(title: "Projects", data: user.projects)
                         .fixedSize(horizontal: false, vertical: true)
-                        .frame(height: 250)
+//                        .frame(minHeight: 250, maxHeight: 600)
                     
                     Spacer()
 
                     TemplateTableView(title: "Skills", data: user.skills)
                         .fixedSize(horizontal: false, vertical: true)
-                        .frame(height: 250)
-
+//                        .frame(minHeight: 250, maxHeight: 600)
+                    
                 }
-                
             }
-            .navigationBarHidden(true)
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: btnBack)
         }

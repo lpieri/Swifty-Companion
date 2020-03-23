@@ -16,6 +16,7 @@ struct UserPicture: View {
         
         self.image
             .resizable()
+            .scaledToFit()
             .frame(minWidth: 0, maxWidth: 142, minHeight: 0, maxHeight: 142)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color("CirclePP"), lineWidth: 4))

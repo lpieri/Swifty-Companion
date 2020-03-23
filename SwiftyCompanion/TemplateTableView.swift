@@ -23,7 +23,7 @@ struct TemplateTableView: View {
                     .fontWeight(.semibold)
                     
                 List {
-                    ForEach(data, id: \.name) { dataRow in
+                    ForEach(data, id: \.id) { dataRow in
                         TemplateTableRow(data: dataRow)
                     }.listRowBackground(Color("Background"))
                 }.onAppear() {
@@ -33,7 +33,7 @@ struct TemplateTableView: View {
                 }
                 
             }.padding()
-            .frame(height: 250)
+            .frame(minHeight: 250, maxHeight: 600)
         }
     }
 }

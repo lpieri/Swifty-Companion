@@ -11,19 +11,22 @@ import SwiftUI
 
 struct  UserData {
     
+    var id: Int
     var name: String
     var state: String
     var grade: NSNumber
     var validated: Bool
     
     init() {
+        self.id = 0
         self.name = "default"
         self.state = "default"
         self.grade = NSNumber(0)
         self.validated = false
     }
     
-    init(name: String, state: String, grade: NSNumber, validated: Bool) {
+    init(id: Int, name: String, state: String, grade: NSNumber, validated: Bool) {
+        self.id = id
         self.name = name
         self.state = state
         self.grade = grade

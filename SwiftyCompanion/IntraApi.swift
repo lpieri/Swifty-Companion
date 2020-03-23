@@ -65,14 +65,19 @@ class   IntraApi: OAuth2DataLoader {
         return image
     }
     
-    func    parseProjectUser(_ dict: Any) -> [UserData] {
+    func    parseProjectUser(_ dict: Any, _ cursus42: Bool) -> [UserData] {
         var projectsParsed = [UserData]()
+        var i: Int = 0
         let projects = dict as! NSArray
+        let searchProjectCursus = (cursus42 == true) ? 21 : 1
         for projectVal in projects {
             let project = projectVal as! NSDictionary
             let projectCursusIds = project["cursus_ids"] as! NSArray
+            if projectCursusIds.count == 0 {
+                continue
+            }
             let cursusId = projectCursusIds[0] as! NSNumber
-            if cursusId.intValue == 1 || cursusId.intValue == 21 {
+            if cursusId.intValue == searchProjectCursus {
                 let projectData = project["project"] as! NSDictionary
                 let projectParent = projectData["parent_id"]
                 if projectParent is NSNull {
@@ -88,11 +93,13 @@ class   IntraApi: OAuth2DataLoader {
                     }
                     if projectStatus == "finished" && project["final_mark"] is NSNumber {
                         let finalMark = project["final_mark"] as! NSNumber
-                        let newProject: UserData = UserData(name: projectName, state: projectStatus, grade: finalMark, validated: projectValidated)
+                        let newProject: UserData = UserData(id: i, name: projectName, state: projectStatus, grade: finalMark, validated: projectValidated)
                         projectsParsed.append(newProject)
+                        i += 1
                     } else {
-                        let newProject: UserData = UserData(name: projectName, state: projectStatus, grade: NSNumber(0), validated: projectValidated)
+                        let newProject: UserData = UserData(id: i, name: projectName, state: projectStatus, grade: NSNumber(0), validated: projectValidated)
                         projectsParsed.append(newProject)
+                        i += 1
                     }
                 }
             }
@@ -102,55 +109,54 @@ class   IntraApi: OAuth2DataLoader {
     
     func    parseSkillsUser(_ dict: Any) -> [UserData] {
         var skillsParsed = [UserData]()
+        var i: Int = 0
         let skills = dict as! NSArray
         for skillVal in skills {
             let skill = skillVal as! NSDictionary
             let status = "skill"
             let level = skill["level"] as! NSNumber
             let nameSkill = skill["name"] as! String
-            let newSkill = UserData(name: nameSkill, state: status, grade: level, validated: false)
+            let newSkill = UserData(id: i, name: nameSkill, state: status, grade: level, validated: false)
             skillsParsed.append(newSkill)
+            i += 1
         }
         return skillsParsed
     }
     
     func    createUser(_ json: OAuth2JSON, newUser: User) -> Void {
-        let login = json["login"] as! String
-        let displayName = json["displayname"] as! String
-        let email = json["email"] as! String
+        var primaryCursus: Bool = false
         var location: String = "Unavailable"
+        var levelAny: Any?
+        var skillsUser = [UserData]()
+        let uiImage: UIImage? = getProfilePicture(json["image_url"] as! String)
+        let cursusUsers = json["cursus_users"] as! NSArray
         if let locationVal = json["location"] {
             if locationVal is String {
                 location = locationVal as! String
             }
         }
-        let uiImage: UIImage? = getProfilePicture(json["image_url"] as! String)
-        let image: Image = Image(uiImage: uiImage!)
-        let cursusUsers = json["cursus_users"] as! NSArray
-        var level: NSNumber = NSNumber(0)
-        var skills: [UserData] = [UserData]()
         for cursus in cursusUsers {
             let dictCursus = cursus as! NSDictionary
             let dictCursusName = dictCursus["cursus"] as! NSDictionary
             if let slugValue = dictCursusName["slug"] {
                 let slug: String = slugValue as! String
-                if slug == "42" || slug == "42cursus" {
-                    let levelAny = dictCursus.value(forKey: "level")
-                    let skillsUser = parseSkillsUser(dictCursus.value(forKey: "skills")!)
-                    level = levelAny as! NSNumber
-                    skills = skillsUser
+                if (slug == "42" || slug == "42cursus") && primaryCursus == false {
+                    if slug == "42cursus" {
+                        primaryCursus = true
+                    }
+                    levelAny = dictCursus.value(forKey: "level")!
+                    skillsUser = parseSkillsUser(dictCursus.value(forKey: "skills")!)
                 }
             }
         }
-        let projectsUser = parseProjectUser(json["projects_users"]!)
-        newUser.login = login
-        newUser.email = email
+        newUser.login = json["login"] as! String
+        newUser.displayName = json["displayname"] as! String
+        newUser.email = json["email"] as! String
+        newUser.image = Image(uiImage: uiImage!)
         newUser.location = location
-        newUser.displayName = displayName
-        newUser.level = level
-        newUser.levelProgress = CGFloat((level.doubleValue - Double(level.intValue)) * 100)
-        newUser.image = image
-        newUser.projects = projectsUser
-        newUser.skills = skills
+        newUser.level = levelAny! as! NSNumber
+        newUser.levelProgress = CGFloat((newUser.level.doubleValue - Double(newUser.level.intValue)) * 100)
+        newUser.skills = skillsUser
+        newUser.projects = parseProjectUser(json["projects_users"]!, primaryCursus)
     }
 }
