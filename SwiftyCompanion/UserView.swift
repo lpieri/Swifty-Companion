@@ -35,13 +35,13 @@ struct UserView: View {
                     
                     TemplateTableView(title: "Projects", data: user.projects)
                         .fixedSize(horizontal: false, vertical: true)
-//                        .frame(minHeight: 250, maxHeight: 600)
+                        .frame(minHeight: 250, maxHeight: 500)
                     
                     Spacer()
 
                     TemplateTableView(title: "Skills", data: user.skills)
                         .fixedSize(horizontal: false, vertical: true)
-//                        .frame(minHeight: 250, maxHeight: 600)
+                        .frame(minHeight: 250, maxHeight: 500)
                     
                 }
             }

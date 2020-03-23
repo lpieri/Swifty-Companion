@@ -47,15 +47,17 @@ struct ContentView: View {
                     Button(action: {
                         self.intra.request(self.login.lowercased(), callback: self.callbackMe(dict:error:))
                     }) {
-                        Text("Enter")
-                            .fontWeight(.semibold)
-                            .font(.title)
+                        ZStack {
+                            Text("Enter")
+                                .fontWeight(.semibold)
+                                .font(.title)
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color(.systemGreen), Color(.green)]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40, antialiased: true)
                     }
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(LinearGradient(gradient: Gradient(colors: [Color(.systemGreen), Color(.green)]), startPoint: .leading, endPoint: .trailing))
-                    .cornerRadius(40, antialiased: true)
                     .padding(.horizontal, 20)
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Error"), message: Text("Error to get user !"), dismissButton: .cancel())

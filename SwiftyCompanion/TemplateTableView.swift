@@ -31,9 +31,10 @@ struct TemplateTableView: View {
                     UITableView.appearance().separatorColor = UIColor(named: "ShadowPP")
                     UITableView.appearance().separatorStyle = .singleLine
                 }
+                .frame(minHeight: 250, maxHeight: 500)
                 
             }.padding()
-            .frame(minHeight: 250, maxHeight: 600)
+//            .frame(height: 250)
         }
     }
 }
