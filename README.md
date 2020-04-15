@@ -39,13 +39,9 @@ The technologies I used to make this project happen are:
 
 ## Views
 
-<!-- <div align="center">
-<img src="assets/launchscreen.png" alt="Screenshot of the launch screen view"  width="300"/>
-<img src="assets/login.png" alt="Screenshot of the login view with FaceID authentication"  width="300"/>
-<img src="assets/list-view.png" alt="Screenshot of the proteins list view"  width="300"/>
-<img src="assets/protein-view.png" alt="Screenshot of the proteins 3D view"  width="300"/>
-<img src="assets/atom-selected-view.png" alt="Screenshot of the proteins 3D view with atom name"  width="300"/>
-<img src="assets/loading-view.png" alt="Screenshot of the loading view"  width="300"/>
-<img src="assets/share-view.png" alt="Screenshot of the share sheet openning"  width="300"/>
-</div> -->
+<div align="center">
+<img src="assets/research-view.png" alt="Screenshotof of the search field"  width="300"/>
+<img src="assets/research-norminet-view.png" alt="Screenshot of the norminet user search"  width="300"/>
+<img src="assets/profile-view.png" alt="Screenshot of norminet profile"  width="300"/>
+</div>
 
