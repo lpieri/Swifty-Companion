@@ -45,6 +45,6 @@ The technologies I used to make this project happen are:
 <img src="assets/profile-view.png" alt="Screenshot of norminet profile"  width="300"/>
 </div>
 
-## Contributrice
+## Contributor
 
 [Louise Pieri](https://github.com/lpieri)
